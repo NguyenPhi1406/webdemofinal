@@ -1,0 +1,48 @@
+﻿@model IEnumerable<webdemofinal.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>LOẠI SẢN PHẨM</h2>
+
+<p>
+    @Html.ActionLink("Thêm Loại Sản Phẩm Mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            Mã loại
+        </th>
+        <th>
+            Tên loại
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDCate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameCate)
+            </td>
+            <td>
+                @Html.ActionLink("sửa", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("chi tiết", "Details", new { id = item.Id }) |
+                @Html.ActionLink("xóa", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

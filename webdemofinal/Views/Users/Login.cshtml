@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<div style="display:flex;border: gray solid 3px;border-radius:25px">
+    <div style="width:50%;">
+        <div style="margin: 30px auto 30px auto; width: 70%;">
+            <div style="margin:auto;">
+                <h2 style="text-align: center">ĐĂNG NHẬP</h2>
+                <h2 style="color: red;">@ViewBag.ThongBao</h2>
+                @using (Html.BeginForm("Login", "Users"))
+                {
+                    @Html.ValidationSummary(true)
+                    <div class="mb-3 mt-3">
+                        <label for="name" class="form-label">Tên tài khoản:</label>
+                        <input type="text" class="form-control" id="name" name="NameCus"
+                               required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pwd" class="form-label">Mật khẩu:</label>
+                        <input type="password" class="form-control" id="pwd" name="PassCus"
+                               required>
+                    </div>
+                    <div>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                        </div>
+
+                        <div>
+                            <a href="@Url.Action("Register","Users")">Đăng ký tài khoản</a>
+                        </div>
+                    </div>
+
+
+
+                }
+            </div>
+        </div>
+    </div>
+
+    <div style="width:50%">
+        <img src="~/Content/Images/dangnhap.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:0px 25px 25px 0px">
+    </div>
+
+</div>
