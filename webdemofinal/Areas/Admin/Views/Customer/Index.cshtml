@@ -1,9 +1,47 @@
-﻿@model webdemofinal.Models.Customer
+﻿@model IEnumerable<webdemofinal.Models.Customer>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>KHÁCH HÀNG</h2>
 
+<p>
+    @Html.ActionLink("Thêm khách hàng mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên khách hàng
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Email
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameCus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneCus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailCus)
+            </td>
+            <td>
+                @Html.ActionLink("sửa", "Edit", new { id = item.IDCus }) |
+                @Html.ActionLink("chi tiết", "Details", new { id = item.IDCus }) |
+                @Html.ActionLink("xóa", "Delete", new { id = item.IDCus })
+            </td>
+        </tr>
+    }
+
+</table>

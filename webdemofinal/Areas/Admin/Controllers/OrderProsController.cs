@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using webdemofinal.Models;
 
-namespace webdemofinal.Controllers
+namespace webdemofinal.Areas.Admin.Controllers
 {
     public class OrderProsController : Controller
     {

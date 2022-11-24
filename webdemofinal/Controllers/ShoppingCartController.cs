@@ -72,15 +72,19 @@ namespace webdemofinal.Controllers
             return PartialView("BagCart");
         }
         public ActionResult CheckOut(FormCollection form)
-        {
+        {   
             try
-            {
+            {   
+
                 Cart cart = Session["Cart"] as Cart;
+                
                 OrderPro _order = new OrderPro();
                 _order.DateOrder = DateTime.Now;
                 _order.AddressDeliverry = form["AddressDeliverry"];
                 _order.IDCus = int.Parse(form["CodeCustomer"]);
                 db.OrderProes.Add(_order);
+                
+                
                 foreach (var item in cart.Items)
                 {
                     // lưu dòng sản phẩm vào chi tiết hóa đơn
@@ -89,15 +93,18 @@ namespace webdemofinal.Controllers
                     _order_detail.IDProduct = item._product.ProductID;
                     _order_detail.UnitPrice = (double)item._product.Price;
                     _order_detail.Quantity = item._quantity;
+                    if(item._quantity == null)
+                        return Content("Vui lòng kiểm tra lại thông tin");
                     db.OrderDetails.Add(_order_detail);
                 }
+                
                 db.SaveChanges();
                 cart.ClearCart();
                 return RedirectToAction("CheckOut_Success", "ShoppingCart");
             }
             catch
             {
-                return Content("Vui lòng kiểm tra lại thông tin"); ;
+                return Content("Vui lòng kiểm tra lại thông tin"); 
             }
         }
         public ActionResult CheckOut_Success()
