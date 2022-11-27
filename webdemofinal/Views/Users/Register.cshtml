@@ -15,6 +15,7 @@
             <label for="name" class="form-label">TÊN ĐĂNG NHẬP:</label>
             <input type="text" class="form-control" id="name"
                    name="NameCus" required>
+            <span id="username_error" style="color:red"></span>
         </div>
         <div class="mb-3 mt-3">
             <label for="email" class="form-label">EMAIL:</label>
@@ -30,7 +31,8 @@
             <label for="phone" class="form-label">ĐIỆN THOẠI:</label>
             <input type="text" class="form-control" id="phone"
                    name="PhoneCus" required>
+            <span id="Phone_error"style="color:red"></span>
         </div>
-        <button type="submit" class="btn btn-primary">XÁC NHẬN</button>
+        <button type="submit" class="btn btn-primary" onclick="return Validate();" >XÁC NHẬN</button>
     }
 </div>
